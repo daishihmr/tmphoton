@@ -1,0 +1,6 @@
+C:\Users\daishi.narazaki\Downloads\Photon-Javascript-Sdk_v4-0-0-2\src\demo-loadbalancing\bin\demo-loadbalancing.dll.config
+C:\Users\daishi.narazaki\Downloads\Photon-Javascript-Sdk_v4-0-0-2\src\demo-loadbalancing\bin\demo-loadbalancing.dll
+C:\Users\daishi.narazaki\Downloads\Photon-Javascript-Sdk_v4-0-0-2\src\demo-loadbalancing\bin\demo-loadbalancing.pdb
+C:\Users\daishi.narazaki\Downloads\Photon-Javascript-Sdk_v4-0-0-2\src\demo-loadbalancing\obj\Debug\demo-loadbalancing.csprojResolveAssemblyReference.cache
+C:\Users\daishi.narazaki\Downloads\Photon-Javascript-Sdk_v4-0-0-2\src\demo-loadbalancing\obj\Debug\demo-loadbalancing.dll
+C:\Users\daishi.narazaki\Downloads\Photon-Javascript-Sdk_v4-0-0-2\src\demo-loadbalancing\obj\Debug\demo-loadbalancing.pdb

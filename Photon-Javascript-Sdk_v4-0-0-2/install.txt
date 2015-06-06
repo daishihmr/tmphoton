@@ -1,0 +1,85 @@
+
+/**
+* The Javascript library and corresponding server components (websocket support) are work in 
+* progress and currently made available in public beta.
+* 
+* Please report any bugs not listed yet and feel free to suggest additional features
+* for the final version. Mail to: developer@exitgames.com
+**/
+
+*** EXIT GAMES PHOTON JAVASCRIPT LIBRARY
+
+
+** INSTALLATION INSTRUCTIONS
+
+
+01. Move the Photon Javascript SDK to a location of your choice,
+    e.g. C:\Photon\sample.
+
+    
+02. Configure the Flash Plugin
+
+    This step is only needed if you open the samples via file browser
+    (URL file://...) and only for browsers not natively supporting
+    websockets ... and/or if you explicitely test the Fash fallback.
+    
+    Repeat this with the browser of your choice.
+    
+    1. <http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html>
+    2. Edit Locations ...
+    3. Add Location ...
+    4. Browse for folder 'sample', e.g. C:\Photon\LiteWebSockets\sample
+    5. Select it
+    6. Confirm and make sure the path shows up correctly!
+
+    
+03. Demo-chat Photon and Lite application sample
+
+   1 Configure demo-chat sample
+
+     This step is only needed if host differs from 'localhost' and the demo is
+     not run via URL file://...!
+    
+     1. Open app.js or app.ts (if you use typescript compiler).
+     2. Goto the start of file and change PhotonServerAddress value from 'localhost' to
+        your host IP-address or hostname.
+     3. Save modified file and recompile if you use typescript compiler.
+
+    
+   2 Start Photon and Lite application
+
+     A quick tutorial on how to setup these is available at
+     <http://doc.exitgames.com/photon-server/PhotonIn5Min/>.
+     
+     Verify Photon and Lite have started successfully looking at the
+     instance's log.
+     ('Photon-Instance...YYYYMMDD.log' shows 'Service is running...')
+
+       
+   3 Open demo-chat/default.html in browser.
+
+     IE requires to accept a ActiveX warning to allow script execution
+     when the demo is run locally.
+
+
+04. Demo-particle and demo-loadbalancing Photon LoadBalancing application samples
+
+   1 If you use standalone Photon LoadBalancing Server
+
+     Start Photon LoadBalancing Server.
+     
+     Verify Photon LoadBalancing Server have started successfully looking at the
+     instance's log.
+     ('Photon-LoadBalancing-YYYYMMDD.log' shows 'Service is running...')
+
+     Open cloud-app-info.js file found in demo root folder with text editor and set your server and application info.
+     
+   2 If you yse Photon Cloud
+
+     Open cloud-app-info.js file found in demo root folder with text editor and set your application info.
+     For Facebook login, uncomment FbAppId field and set your Facebook App id. Place your HTML5 / JavaScript client code on one of App Domains specified in your Facebook App settings. This required for proper Facebook Login button work.
+
+   3 Open demo-particle/default.html or demo-loadbalancing/default.html	in browser.
+
+     IE requires to accept a ActiveX warning to allow script execution
+     when the demo is run locally.

@@ -16,16 +16,14 @@ tm.define("GameScene", {
         var self = this;
         
         this.client = Client(Photon.ConnectionProtocol.Ws, "ad293f27-6b33-448a-9cbd-be26130f0555", "1.0");
-        this.client.on("actorjoin", function(e) {
+        this.client.on("actorjoined", function(e) {
             var actor = e.actor;
             this.circles.push(Circle(actor).addChildTo(this));
         }.bind(this));
         
-        this.button = FlatButton({
-            text: "connect"
-        })
+        var button = FlatButton({ text: "connect" })
             .on("push", function(){
-                this.button.remove();
+                button.remove();
                 this.connect();
             }.bind(this))
             .setPosition(SCREEN_WIDTH * 0.5, SCREEN_HEIGHT * 0.5)
@@ -33,52 +31,40 @@ tm.define("GameScene", {
     },
     
     update: function(app) {
-        if (this.client.isJoinedToRoom()) {
-            var myCircle = this.myCircle;
-            var myActor = this.client.myActor();
-            if (myCircle && myActor) {
-                myActor.setCustomProperties({
-                    x: myCircle.x,
-                    y: myCircle.y,
-                });
-            }
-        }
+        this.client.update(app);
     },
     
     connect: function() {
-        this.client.connect();
+        var self = this;
+        var client = this.client;
         
-        this.client.on("connected", function() {
-            var myActor = this.client.myActor();
-            console.log(myActor);
-            this.myCircle = MyCircle(myActor.actorNr).addChildTo(this);
-        }.bind(this));
-        
-        this.client.one("roomlistupdate", function() {
-            if (this.client.rooms && this.client.rooms.length) {
-                var room = this.client.rooms[0];
-                console.log("joinRoom", room);
-                this.client.joinRoom(room.name);
-            } else {
-                console.log("createRoom");
-                this.client.createRoom();
-            }
-        }.bind(this));
-        
-        this.client.one("joined", function() {
-            console.log("joined");
-            var room = this.client.myRoom();
-            console.log(room);
-            
-            var actors = this.client.myRoomActors();
-            console.log(actors);
-            for (var nr in actors) {
-                var actor = actors[nr];
-                if (!actor.isLocal) {
-                    this.circles.push(Circle(actor).addChildTo(this));
+        client.connect()
+            .then(function() {
+                var firstRoom = client.roomList.first;
+                if (firstRoom) {
+                    console.log("部屋があるから入るよ");
+                } else {
+                    console.log("部屋がないから作るよ");
                 }
-            }
-        }.bind(this));
+                return firstRoom ? client.joinRoom(firstRoom.name) : client.createRoom("俺の部屋");
+            })
+            .then(function() {
+                console.log("GAME START", client.myRoom().name);
+
+                var button = FlatButton({ text: "leave" })
+                    .on("push", function(){
+                        button.remove();
+                        client.leaveRoom().then(function() {
+                            console.log("部屋から出たよ");
+                        });
+                    })
+                    .setPosition(SCREEN_WIDTH * 0.5, SCREEN_HEIGHT * 0.5)
+                    .addChildTo(self);
+
+            })
+            .catch(function(e) {
+                console.log("ERROR");
+            });
     },
     
     disconnect: function() {

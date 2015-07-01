@@ -100,39 +100,39 @@ tm.define("tm.photon.Client", {
         var State = Photon.LoadBalancing.LoadBalancingClient.State;
         switch (state) {
         case State.Error:
-            console.log("--- Error");
+            // console.log("--- Error");
             this._enqueueEvent("error");
             break;
         case State.Uninitialized:
-            console.log("--- Uninitialized");
+            // console.log("--- Uninitialized");
             break;
         case State.ConnectingToNameServer:
-            console.log("--- ConnectingToNameServer");
+            // console.log("--- ConnectingToNameServer");
             break;
         case State.ConnectedToNameServer:
-            console.log("--- ConnectedToNameServer");
+            // console.log("--- ConnectedToNameServer");
             break;
         case State.ConnectingToMasterserver:
-            console.log("--- ConnectingToMasterserver");
+            // console.log("--- ConnectingToMasterserver");
             break;
         case State.ConnectedToMaster:
-            console.log("--- ConnectedToMaster");
+            // console.log("--- ConnectedToMaster");
             break;
         case State.JoinedLobby:
-            console.log("--- JoinedLobby");
+            // console.log("--- JoinedLobby");
             this._enqueueEvent("joinedlobby");
             break;
         case State.ConnectingToGameserver:
-            console.log("--- ConnectingToGameserver");
+            // console.log("--- ConnectingToGameserver");
             break;
         case State.ConnectedToGameserver:
-            console.log("--- ConnectedToGameserver");
+            // console.log("--- ConnectedToGameserver");
             break;
         case State.Joined:
-            console.log("--- Joined");
+            // console.log("--- Joined");
             break;
         case State.Disconnected:
-            console.log("--- Disconnected");
+            // console.log("--- Disconnected");
             this._enqueueEvent("disconnected");
             break;
         }
@@ -216,7 +216,9 @@ tm.define("tm.photon.Client", {
     },
 });
 
-tm.photon.Client.OpCode.UPDATE_ELEMENT = 1;
+tm.photon.Client.OpCode = {
+    UPDATE_ELEMENT: 1,
+};
 
 // tm.photon.Client extends tm.event.EventDispatcher
 [
